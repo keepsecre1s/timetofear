@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>TIME TO FEAR — Страшные квесты в Новочеркасске</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC&family=Montserrat+Alternates:wght@400;600&family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ШАПКА -->
+  <header class="header">
+    <a href="index.html" class="header__logo">
+      <img src="images/logo.svg" alt="Логотип" />
+    </a>
+    <nav class="header__nav">
+      <a href="#quests" class="header__btn">Все квесты</a>
+      <a href="#reviews" class="header__btn">Отзывы</a>
+      <a href="#contacts" class="header__btn">Контакты</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img src="images/ka4eli.svg" alt="" class="hero__bg" />
+    <div class="hero__texts">
+      <p class="hero__t1">TIME TO FEAR</p>
+      <p class="hero__t2">СТРАШНЫЕ КВЕСТЫ В НОВОЧЕРКАССКЕ</p>
+    </div>
+  </section>
+
+  <!-- НАШИ КВЕСТЫ -->
+  <section class="quests-section" id="quests">
+    <h2 class="section-title">НАШИ КВЕСТЫ</h2>
+    <div class="section-underline"></div>
+    <p class="quests-sub">УЖАС НА ЛЮБОЙ ВКУС. КАЖДЫЙ КВЕСТ — ЭТО НОВАЯ ПЕТЛЯ. ПРИМЕРЬТЕ ТУ, ЧТО ПО ДУШЕ.</p>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">ВСЕ</button>
+      <button class="filter-btn" data-filter="fear">УРОВЕНЬ<br>СТРАХА</button>
+      <button class="filter-btn" data-filter="type">ТИП<br>ХОРРОРА</button>
+    </div>
+
+    <div class="quests-grid" id="questsGrid"></div>
+  </section>
+
+  <!-- ОТЗЫВЫ -->
+  <section class="reviews-section" id="reviews">
+    <h2 class="section-title">ОТЗЫВЫ НА НАШИ КВЕСТЫ</h2>
+    <div class="section-underline"></div>
+
+    <div class="reviews-grid">
+      <!-- Ряд 1: 3 отзыва -->
+      <div class="reviews-row">
+        <div class="review-card">
+          <p class="review-card__title">ПЕРФОРМАНС "КРИК"</p>
+          <div class="review-card__user">
+            <img src="images/otz.svg" alt="" class="review-card__avatar" />
+            <div>
+              <p class="review-card__name">НИКИТА ЛОЩИНИН</p>
+              <span style="color:#ffffff;font-size:26px;letter-spacing:3px;line-height:1;display:block;margin-top:2px;">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-card__text">АТМОСФЕРА ПРЯМО КАК В ФИЛЬМЕ! ПОСТОЯННОЕ ЧУВСТВО, ЧТО ЗА ТОБОЙ СЛЕДЯТ. МАСКА ПРИЗРАКА ВЫСКАКИВАЕТ ИЗ САМЫХ НЕОЖИДАННЫХ МЕСТ — МЫ ОРАЛИ ВСЕМ СОСТАВОМ. ОТДЕЛЬНОЕ СПАСИБО ЗА РОЗЫГРЫШИ С ТЕЛЕФОННЫМИ ЗВОНКАМИ. 10/10</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-card__title">ПЕРФОРМАНС "ОНО"</p>
+          <div class="review-card__user">
+            <img src="images/otz.svg" alt="" class="review-card__avatar" />
+            <div>
+              <p class="review-card__name">СВЕТЛАНА АДАМОВА</p>
+              <span style="color:#ffffff;font-size:26px;letter-spacing:3px;line-height:1;display:block;margin-top:2px;">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-card__text">ОЧЕНЬ АТМОСФЕРНО: СТАРАЯ БИБЛИОТЕКА, КОМНАТА С ИГРУШКАМИ, ПОДВАЛ С КРАСНЫМ ОГНЁМ. АНТАГОНИСТ НЕ ПРОСТО ПУГАЕТ, А ИГРАЕТ С ТОБОЙ В ИГРЫ. МОМЕНТ, КОГДА ВСЕ УЧАСТНИКИ ЗАШЛИ В ЛИФТ, А ОН УЖЕ ТАМ СТОЯЛ... МЫ ВЫХОДИЛИ НА ВАТНЫХ НОГАХ.</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-card__title">ПЕРФОРМАНС "ПИЛА"</p>
+          <div class="review-card__user">
+            <img src="images/otz.svg" alt="" class="review-card__avatar" />
+            <div>
+              <p class="review-card__name">ЕКАТЕРИНА КРАЙНОВА</p>
+              <span style="color:#ffffff;font-size:26px;letter-spacing:3px;line-height:1;display:block;margin-top:2px;">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-card__text">«ПИЛА» — ЭТО ТИКАЮЩИЙ ТАЙМЕР, ЖЁСТКИЕ ЛОВУШКИ И МОРАЛЬНЫЙ ВЫБОР. КУКЛА БИЛЛИ НА ЭКРАНЕ ГОВОРИТ СПОКОЙНО, НО ОТ ЭТОГО СТРАШНЕЕ. МЫ ПРОШЛИ С 5 СЕКУНДАМИ ДО КОНЦА — АДРЕНАЛИН ЗАШКАЛИВАЛ. ЛУЧШИЙ ТРАП-ХОРРОР ИЗ ВСЕХ, ЧТО МЫ ПРОБОВАЛИ.</p>
+        </div>
+      </div>
+
+      <!-- Ряд 2: 2 отзыва по центру -->
+      <div class="reviews-row--center">
+        <div class="review-card">
+          <p class="review-card__title">ПЕРФОРМАНС "УЖАСАЮЩИЙ"</p>
+          <div class="review-card__user">
+            <img src="images/otz.svg" alt="" class="review-card__avatar" />
+            <div>
+              <p class="review-card__name">ДАРЬЯ ЧАПЛЫГИНА</p>
+              <span style="color:#ffffff;font-size:26px;letter-spacing:3px;line-height:1;display:block;margin-top:2px;">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-card__text">КВЕСТ ОКАЗАЛСЯ ЖЕСТЧЕ, ЧЕМ ФИЛЬМ. ОРГАНИЗАТОРЫ НЕ ПОЩАДИЛИ НИКОГО: РЕАЛИСТИЧНАЯ КРОВЬ, ОТРУБЛЕННЫЕ КОНЕЧНОСТИ (БУТАФОРСКИЕ, НО ВЫГЛЯДЯТ МЕРЗКО) И ПОЛНОЕ ОТСУТСТВИЕ ПРАВИЛ. АРТ ВЫЛЕЗАЕТ ОТОВСЮДУ: ИЗ МУСОРНОГО БАКА, ПОТОЛКА, ДАЖЕ ИЗ ТЕЛЕВИЗОРА.</p>
+        </div>
+
+        <div class="review-card">
+          <p class="review-card__title">ПЕРФОРМАНС "СУДНАЯ НОЧЬ"</p>
+          <div class="review-card__user">
+            <img src="images/otz.svg" alt="" class="review-card__avatar" />
+            <div>
+              <p class="review-card__name">ДАРЬЯ ЧИПИГА</p>
+              <span style="color:#ffffff;font-size:26px;letter-spacing:3px;line-height:1;display:block;margin-top:2px;">★★★★★</span>
+            </div>
+          </div>
+          <p class="review-card__text">«СУДНАЯ НОЧЬ» — ТЫ И ТВОИ НЕРВЫ ПРОТИВ ЦЕЛОГО ГОРОДА БЕЗ ПРАВИЛ. СИРЕНЫ, КРИКИ, МАСКИ И БЕСКОНЕЧНАЯ ПОГОНЯ. АКТЁРЫ НЕ ЩАДЯТ — НАПАДАЮТ СТЕНОЙ. ОЩУЩЕНИЕ, ЧТО СНИМАЕШЬСЯ В ФИЛЬМЕ. ВЫБЕЖАЛИ МОКРЫМИ ОТ СТРАХА.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- КОНТАКТЫ -->
+  <section class="contacts-section" id="contacts">
+    <h2 class="section-title">НАШИ КОНТАКТЫ</h2>
+    <div class="section-underline"></div>
+
+    <div class="contacts-card">
+      <p class="contacts-card__heading">У ТЕБЯ ЕСТЬ ВЫБОР. СДЕЛАЙ ЕГО</p>
+      <div class="contacts-card__body">
+        <p>ПРАВИЛО №1: ПОЗВОНИ ПО НОМЕРУ <a href="tel:+79508559413" class="contacts-link">+7 (950) 855-94-13</a></p>
+        <p>ПРАВИЛО №2: НАЗОВИ КОДОВОЕ СЛОВО «ХОЧУ БОЯТЬСЯ»</p>
+        <p>ПРАВИЛО №3: НЕ МОЛЧИ. МОЛЧАНИЕ = СМЕРТЬ</p>
+        <p>📍 АДРЕС ИГРЫ: УЛ. АЛЕКСАНДРОВСКАЯ, 9</p>
+        <p>🕒 ТВОЙ ТАЙМЕР: 9:00 – 00:00</p>
+      </div>
+      <p class="contacts-card__footer">ИГРА НАЧНЁТСЯ, КОГДА ТЫ НАБЕРЁШЬ НОМЕР</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

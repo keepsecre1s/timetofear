@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ОНО — TIME TO FEAR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC&family=Montserrat+Alternates:wght@400;600&family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: #031015;
+      color: #fff;
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-weight: 400;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: clamp(64px, 8vw, 116px);
+      background: rgba(19, 32, 41, 0.76);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(16px, 3vw, 41px);
+    }
+    .header__logo {
+      display: block;
+      width: clamp(48px, 6vw, 86px);
+      height: clamp(48px, 6vw, 86px);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .header__logo img { width: 100%; height: 100%; object-fit: contain; }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: clamp(420px, 55vw, 900px);
+      overflow: hidden;
+      padding-top: clamp(64px, 8vw, 116px);
+    }
+    .hero__bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to right, rgba(0,0,0,0.72) 50%, rgba(0,0,0,0.15) 100%);
+      pointer-events: none;
+    }
+    .hero__content {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: clamp(80px, 10vw, 160px) clamp(20px, 5vw, 80px) clamp(20px, 3vw, 60px);
+    }
+    .hero__title {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(28px, 5vw, 90px);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: clamp(4px, 0.5vw, 10px);
+    }
+    .hero__genre {
+      font-size: clamp(12px, 1.8vw, 32px);
+      color: #fff;
+      margin-bottom: clamp(12px, 2vw, 36px);
+    }
+    .hero__book-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: clamp(12px, 1.5vw, 28px);
+      width: fit-content;
+      height: clamp(44px, 7vw, 120px);
+      padding: 0 clamp(20px, 3vw, 56px);
+      background: #420814;
+      border: none;
+      cursor: pointer;
+      border-radius: 60px;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin-bottom: clamp(16px, 3vw, 56px);
+    }
+    .hero__book-btn:hover { background: #5e0e1d; }
+    .hero__book-text {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(14px, 2.2vw, 40px);
+      color: #fff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .hero__book-icon {
+      width: clamp(24px, 4vw, 72px);
+      height: clamp(21px, 3.5vw, 63px);
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    /* Info row */
+    .hero__info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(10px, 2vw, 40px);
+    }
+    .hero__info-item {
+      display: flex;
+      align-items: center;
+      gap: clamp(6px, 1vw, 14px);
+    }
+    .hero__info-item .icon {
+      width: clamp(24px, 4vw, 72px);
+      height: clamp(24px, 4vw, 72px);
+      object-fit: contain;
+    }
+    .hero__info-item span {
+      font-size: clamp(10px, 1.6vw, 28px);
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    /* ===== WHITE SECTION ===== */
+    .white-section {
+      background: #fff;
+      position: relative;
+      color: #000;
+      padding: clamp(40px, 6vw, 100px) clamp(20px, 8vw, 200px);
+      clip-path: polygon(0 0, 100% 3%, 100% 100%, 0 100%);
+      padding-top: clamp(60px, 8vw, 140px);
+    }
+    .desc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 80px);
+      align-items: start;
+    }
+    @media (max-width: 768px) {
+      .desc-layout { grid-template-columns: 1fr; }
+    }
+    .desc-left-col {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 3vw, 48px);
+    }
+    .desc-text {
+      font-size: clamp(13px, 1.6vw, 30px);
+      line-height: 1.6;
+      color: #000;
+    }
+    .desc-right-col {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: clamp(10px, 2vw, 40px);
+    }
+    .desc-right-line {
+      width: 100%;
+      max-width: clamp(120px, 20vw, 702px);
+      height: 4px;
+      background: #420814;
+      margin-bottom: clamp(10px, 1.5vw, 24px);
+    }
+    .desc-right-text {
+      font-size: clamp(18px, 2.8vw, 48px);
+      line-height: 1.3;
+      color: #000;
+    }
+
+    /* ===== DARK SECTION: photos ===== */
+    .dark-section {
+      background: #031015;
+      padding: clamp(40px, 5vw, 80px) 0;
+      overflow-x: auto;
+    }
+    .photo-grid {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(14px, 2vw, 40px);
+      padding: 0 clamp(20px, 5vw, 105px);
+      align-items: center;
+    }
+    .photo-row {
+      display: flex;
+      gap: clamp(14px, 2vw, 40px);
+    }
+    .photo-item {
+      width: clamp(260px, 34vw, 634px);
+      height: clamp(172px, 22.5vw, 420px);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .photo-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ===== BOOKING SECTION ===== */
+    .booking-section {
+      background: #031015;
+      padding: clamp(20px, 3vw, 60px) clamp(20px, 5vw, 100px) clamp(40px, 6vw, 100px);
+    }
+    .booking-title {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(22px, 4vw, 80px);
+      color: #fff;
+      text-align: center;
+      margin-bottom: clamp(12px, 2vw, 32px);
+    }
+    .booking-sub {
+      font-size: clamp(12px, 1.5vw, 28px);
+      color: #fff;
+      text-align: center;
+      line-height: 1.6;
+      margin-bottom: clamp(24px, 4vw, 60px);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .booking-table-wrap {
+      background: #101C23;
+      border-radius: clamp(12px, 2vw, 30px);
+      padding: clamp(16px, 2vw, 40px);
+      overflow-x: auto;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .booking-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+    .booking-table th {
+      font-size: clamp(13px, 1.2vw, 22px);
+      color: #506677;
+      font-weight: 400;
+      text-align: left;
+      padding: 0 0 clamp(10px, 1.5vw, 24px) 0;
+    }
+    .booking-table th:first-child { width: clamp(80px, 8vw, 160px); }
+    .booking-table tr.date-row td {
+      padding: clamp(8px, 1vw, 18px) 0;
+      vertical-align: middle;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .date-cell {
+      font-size: clamp(13px, 1.2vw, 24px);
+      color: #fff;
+      white-space: nowrap;
+      padding-right: clamp(12px, 2vw, 30px);
+    }
+    .sessions-cell {
+      display: flex;
+      flex-wrap: wrap;
+      gap: clamp(6px, 0.8vw, 12px);
+      align-items: center;
+    }
+    .session-btn {
+      background: #420814;
+      border: none;
+      border-radius: clamp(6px, 1vw, 12px);
+      cursor: pointer;
+      padding: clamp(5px, 0.6vw, 10px) clamp(8px, 1vw, 16px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background 0.2s;
+      min-width: clamp(60px, 6vw, 90px);
+    }
+    .session-btn:hover { background: #5e0e1d; }
+    .session-btn .time {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(12px, 1.2vw, 22px);
+      color: #fff;
+      font-weight: 400;
+    }
+    .session-btn .price {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(10px, 0.9vw, 16px);
+      color: rgba(255,255,255,0.75);
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    /* ===== MODAL ===== */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #0B1D24;
+      border-radius: 24px;
+      padding: clamp(24px, 3vw, 40px);
+      width: 100%;
+      max-width: 620px;
+      position: relative;
+      font-family: 'Montserrat Alternates', sans-serif;
+    }
+    .modal__close {
+      position: absolute;
+      top: 16px; right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal__title {
+      font-size: clamp(16px, 1.8vw, 26px);
+      color: #fff;
+      margin-bottom: 14px;
+      padding-right: 36px;
+    }
+    .modal__divider {
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin-bottom: 16px;
+    }
+    .modal__meta {
+      font-size: clamp(13px, 1.2vw, 20px);
+      color: #fff;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+    .modal__label {
+      font-size: clamp(12px, 1.1vw, 18px);
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 5px;
+      margin-top: 14px;
+    }
+    .modal__input {
+      width: 100%;
+      height: clamp(44px, 4vw, 56px);
+      background: #1C495B;
+      border: none;
+      border-radius: 12px;
+      padding: 0 16px;
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(13px, 1.2vw, 18px);
+      color: #fff;
+      outline: none;
+    }
+    .modal__input::placeholder { color: rgba(255,255,255,0.4); }
+    .modal__sound-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .modal__sound-btn {
+      width: 36px; height: 36px;
+      background: #1C495B;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      border: none;
+      cursor: pointer;
+    }
+    .modal__sound-btn svg { fill: #fff; width: 12px; height: 12px; }
+    .modal__sound-text {
+      font-size: clamp(13px, 1.2vw, 18px);
+      color: #fff;
+    }
+    .modal__footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
+    }
+    .modal__submit {
+      background: #1C495B;
+      border: none;
+      border-radius: 12px;
+      height: clamp(44px, 4vw, 56px);
+      padding: 0 clamp(24px, 3vw, 40px);
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(14px, 1.4vw, 22px);
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: 0.05em;
+    }
+    .modal__submit:hover { background: #255870; }
+
+    /* ===== TOAST NOTIFICATION ===== */
+    .toast {
+      position: fixed;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #101C23;
+      border: 1px solid #420814;
+      border-radius: 16px;
+      padding: 20px 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      min-width: 320px;
+      max-width: 90vw;
+      z-index: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .toast.active {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    .toast__icon {
+      width: 40px; height: 40px;
+      flex-shrink: 0;
+      background: #420814;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .toast__icon svg { fill: #fff; width: 18px; height: 18px; }
+    .toast__body {}
+    .toast__title {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .toast__text {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+    .toast__close {
+      position: absolute;
+      top: 12px; right: 16px;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .toast__close:hover { color: #fff; }
+
+    /* ===== CONTACTS SECTION (quest pages) ===== */
+    .contacts-section { padding: 60px 0 80px; background: #031015; }
+    .contacts-section .section-title {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(20px, 2.5vw, 35px);
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+    }
+    .contacts-section .section-underline {
+      width: 214px; height: 6px;
+      background: #420814;
+      margin: 10px auto 24px;
+    }
+    .contacts-card {
+      max-width: 1211px;
+      width: 90%;
+      background: #304757;
+      margin: 0 auto;
+      padding: 36px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      border-radius: 50px;
+    }
+    .contacts-card__heading {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(16px, 2vw, 35px);
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+    }
+    .contacts-card__body {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(12px, 1.4vw, 26px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.8;
+    }
+    .contacts-card__footer {
+      font-family: 'Montserrat Alternates', sans-serif;
+      font-size: clamp(14px, 1.8vw, 35px);
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+    }
+    .contacts-link { color: #fff; text-decoration: underline; }
+    .contacts-link:hover { color: #ccc; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a href="index.html" class="header__logo">
+    <img src="images/logo.svg" alt="TIME TO FEAR" />
+  </a>
+  <nav style="display:flex;gap:24px;flex-wrap:wrap;justify-content:flex-end;">
+    <a href="#contacts" style="display:flex;align-items:center;justify-content:center;padding:0 28px;height:51px;background:#420814;color:#fff;text-decoration:none;font-family:'Cormorant SC',serif;font-size:24px;border-radius:50px;white-space:nowrap;">Контакты</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero__bg" src="images/strono.svg" alt="ОНО" />
+  <div class="hero__content">
+    <p class="hero__title">ОНО</p>
+    <p class="hero__genre">ПСИХОЛОГИЧЕСКИЙ ХОРРОР</p>
+    <a class="hero__book-btn" href="#booking">
+      <span class="hero__book-text">ЗАБРОНИРОВАТЬ</span>
+      <img class="hero__book-icon" src="images/ladoshka.svg" alt="" />
+    </a>
+    <div class="hero__info">
+      <div class="hero__info-item">
+        <img class="icon" src="images/smailik.svg" alt="" />
+        <span>ОТ 4 ДО 7 ИГРОКОВ</span>
+      </div>
+      <div class="hero__info-item">
+        <img class="icon" src="images/kubiki.svg" alt="" />
+        <span>ДОСТУПНО С 16 ЛЕТ</span>
+      </div>
+      <div class="hero__info-item">
+        <img class="icon" src="images/4asi.svg" alt="" />
+        <span>ДЛИТЕЛЬНОСТЬ ДО 90 МИНУТ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHITE SECTION -->
+<section class="white-section">
+  <div class="desc-layout">
+    <div class="desc-left-col">
+      <p class="desc-text">TOO BAD, SO SAD, YOU COULDN'T SAVE OLD MATTY BOY. TASTY, TASTY, MATTY BOY. YOU CONVINCED EVERYONE TO COME AND SEE ME, CAUSE YOU'RE SUCH A GOOD FRIEND, BUT SUCH A BAD DAUGHTER.</p>
+      <p class="desc-text">КАК ЖАЛЬ, ТАК ГРУСТНО, ЧТО ТЫ НЕ СМОГ СПАСТИ СТАРОГО МЭТТИ. ВКУСНЫЙ, ВКУСНЫЙ МЭТТИ. ТЫ ВСЕХ УБЕДИЛ ПРИЙТИ КО МНЕ, ПОТОМУ ЧТО ТЫ ТАКОЙ ХОРОШИЙ ДРУГ, НО ТАКАЯ ПЛОХАЯ ДОЧЬ.</p>
+    </div>
+    <div class="desc-right-col">
+      <div class="desc-right-line"></div>
+      <p class="desc-right-text">ТВОЙ СТРАХ УЖЕ ОБРЁЛ ФОРМУ.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DARK SECTION: photos -->
+<section class="dark-section">
+  <div class="photo-grid">
+    <div class="photo-row">
+      <div class="photo-item"><img src="images/ono1.svg" alt="" /></div>
+      <div class="photo-item"><img src="images/ono2.svg" alt="" /></div>
+    </div>
+    <div class="photo-row">
+      <div class="photo-item"><img src="images/ono3.svg" alt="" /></div>
+      <div class="photo-item"><img src="images/ono4.svg" alt="" /></div>
+    </div>
+    <div class="photo-row">
+      <div class="photo-item"><img src="images/ono5.svg" alt="" /></div>
+      <div class="photo-item"><img src="images/ono6.svg" alt="" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING SECTION -->
+<section class="booking-section" id="booking">
+  <p class="booking-title">ЗАБРОНИРОВАТЬ ИГРУ</p>
+  <p class="booking-sub">ГОТОВЫ ПОГРУЗИТЬСЯ В ИГРУ? ТОГДА ВЫБИРАЙТЕ ДЕНЬ И ВРЕМЯ, ИЗУЧАЙТЕ ДЕТАЛИ И ХВАТАЙТЕ БРОНЬ. ЗАПЛАТИТЕ ПРЯМО ПЕРЕД ВХОДОМ – ЛЮБЫМ СПОСОБОМ. ЛЕГКО!</p>
+  <div class="booking-table-wrap">
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>Дата</th>
+          <th>Сеансы</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="contacts-section" id="contacts">
+  <h2 class="section-title">НАШИ КОНТАКТЫ</h2>
+  <div class="section-underline"></div>
+  <div class="contacts-card">
+    <p class="contacts-card__heading">У ТЕБЯ ЕСТЬ ВЫБОР. СДЕЛАЙ ЕГО</p>
+    <div class="contacts-card__body">
+      <p>ПРАВИЛО №1: ПОЗВОНИ ПО НОМЕРУ <a href="tel:+79508559413" class="contacts-link">+7 (950) 855-94-13</a></p>
+      <p>ПРАВИЛО №2: НАЗОВИ КОДОВОЕ СЛОВО «ХОЧУ БОЯТЬСЯ»</p>
+      <p>ПРАВИЛО №3: НЕ МОЛЧИ. МОЛЧАНИЕ = СМЕРТЬ</p>
+      <p>📍 АДРЕС ИГРЫ: УЛ. АЛЕКСАНДРОВСКАЯ, 9</p>
+      <p>🕒 ТВОЙ ТАЙМЕР: 9:00 – 00:00</p>
+    </div>
+    <p class="contacts-card__footer">ИГРА НАЧНЁТСЯ, КОГДА ТЫ НАБЕРЁШЬ НОМЕР</p>
+  </div>
+</section>
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal__close" id="modalClose">✕</button>
+    <p class="modal__title" id="modalTitle">Забронировать квест «ОНО»</p>
+    <div class="modal__divider"></div>
+    <p class="modal__meta" id="modalDatetime">Дата и время:</p>
+    <p class="modal__meta" id="modalPrice">Цена:</p>
+    <p class="modal__label">Имя, фамилия</p>
+    <input class="modal__input" type="text" placeholder="Введите имя и фамилию" id="fieldName" />
+    <p class="modal__label">Телефон</p>
+    <input class="modal__input" type="tel" placeholder="+7 (___) ___-__-__" id="fieldPhone" />
+    <p class="modal__label">E-mail</p>
+    <input class="modal__input" type="email" placeholder="example@email.com" id="fieldEmail" />
+    <div class="modal__sound-row">
+      <button class="modal__sound-btn" id="playBtn" title="Воспроизвести">
+        <svg viewBox="0 0 12 14"><polygon points="0,0 12,7 0,14"/></svg>
+      </button>
+      <button class="modal__sound-btn" id="pauseBtn" title="Пауза" style="display:none;">
+        <svg viewBox="0 0 12 14"><rect x="0" y="0" width="4" height="14"/><rect x="8" y="0" width="4" height="14"/></svg>
+      </button>
+      <span class="modal__sound-text">Нажми и погрузись в игру прямо сейчас!</span>
+    </div>
+    <audio id="questAudio" src="sounds/sound-ono.mp3"></audio>
+    <div class="modal__footer">
+      <button class="modal__submit" id="submitBtn">ЗАБРОНИРОВАТЬ</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast__icon">
+    <svg viewBox="0 0 20 20"><path d="M8 15l-5-5 1.41-1.41L8 12.17l7.59-7.59L17 6z"/></svg>
+  </div>
+  <div class="toast__body">
+    <p class="toast__title">Бронь принята!</p>
+    <p class="toast__text" id="toastText"></p>
+  </div>
+  <button class="toast__close" id="toastClose">✕</button>
+</div>
+
+<script>
+  const DATES = ['11 мая','12 мая','13 мая','14 мая','15 мая','16 мая','17 мая'];
+  const SESSIONS = [
+    {time:'9:00',  price:'4 500 ₽'},
+    {time:'10:30', price:'4 500 ₽'},
+    {time:'12:00', price:'4 500 ₽'},
+    {time:'13:30', price:'5 000 ₽'},
+    {time:'15:00', price:'5 500 ₽'},
+    {time:'16:30', price:'5 500 ₽'},
+    {time:'18:00', price:'5 500 ₽'},
+    {time:'19:30', price:'6 000 ₽'},
+    {time:'21:00', price:'6 000 ₽'},
+    {time:'22:30', price:'7 000 ₽'},
+  ];
+  const QUEST_NAME = 'ОНО';
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyvn_e_TQ6HFWrdp7ZsQ5DOoli_qaJipOuQrq28BjixlaZIW1F3t1turuxQpCF2IiuV/exec';
+
+  // Build table
+  const tbody = document.getElementById('scheduleBody');
+  DATES.forEach(date => {
+    const tr = document.createElement('tr');
+    tr.className = 'date-row';
+    const dateTd = document.createElement('td');
+    dateTd.className = 'date-cell';
+    dateTd.textContent = date;
+    const sessionsTd = document.createElement('td');
+    const div = document.createElement('div');
+    div.className = 'sessions-cell';
+    SESSIONS.forEach(s => {
+      const btn = document.createElement('button');
+      btn.className = 'session-btn';
+      btn.innerHTML = `<span class="time">${s.time}</span><span class="price">${s.price}</span>`;
+      btn.addEventListener('click', () => openModal(date, s.time, s.price));
+      div.appendChild(btn);
+    });
+    sessionsTd.appendChild(div);
+    tr.appendChild(dateTd);
+    tr.appendChild(sessionsTd);
+    tbody.appendChild(tr);
+  });
+
+  // Modal
+  const overlay = document.getElementById('modalOverlay');
+  const audio = document.getElementById('questAudio');
+  const playBtn = document.getElementById('playBtn');
+  const pauseBtn = document.getElementById('pauseBtn');
+
+  function openModal(date, time, price) {
+    document.getElementById('modalDatetime').textContent = `Дата и время: ${date} 2026, ${time}`;
+    document.getElementById('modalPrice').textContent = `Цена: ${price}`;
+    overlay.classList.add('active');
+  }
+  function closeModal() {
+    overlay.classList.remove('active');
+    audio.pause(); audio.currentTime = 0;
+    playBtn.style.display = 'flex';
+    pauseBtn.style.display = 'none';
+  }
+  document.getElementById('modalClose').addEventListener('click', closeModal);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+  playBtn.addEventListener('click', () => {
+    audio.play();
+    playBtn.style.display = 'none';
+    pauseBtn.style.display = 'flex';
+  });
+  pauseBtn.addEventListener('click', () => {
+    audio.pause();
+    pauseBtn.style.display = 'none';
+    playBtn.style.display = 'flex';
+  });
+  audio.addEventListener('ended', () => {
+    playBtn.style.display = 'flex';
+    pauseBtn.style.display = 'none';
+  });
+
+  // Toast
+  const toast = document.getElementById('toast');
+  const toastText = document.getElementById('toastText');
+  let toastTimer = null;
+  function showToast(msg) {
+    toastText.textContent = msg;
+    toast.classList.add('active');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('active'), 5000);
+  }
+  document.getElementById('toastClose').addEventListener('click', () => {
+    toast.classList.remove('active');
+    clearTimeout(toastTimer);
+  });
+
+  // Submit
+  document.getElementById('submitBtn').addEventListener('click', async () => {
+    const name = document.getElementById('fieldName').value.trim();
+    const phone = document.getElementById('fieldPhone').value.trim();
+    const email = document.getElementById('fieldEmail').value.trim();
+    const datetime = document.getElementById('modalDatetime').textContent;
+    const price = document.getElementById('modalPrice').textContent;
+
+    if (!name || !phone || !email) {
+      showToast('Пожалуйста, заполните все поля.');
+      return;
+    }
+
+    const payload = { quest: QUEST_NAME, datetime, price, name, phone, email };
+
+    try {
+      if (SHEETS_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+        await fetch(SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+      }
+      closeModal();
+      document.getElementById('fieldName').value = '';
+      document.getElementById('fieldPhone').value = '';
+      document.getElementById('fieldEmail').value = '';
+      showToast(`${datetime.replace('Дата и время: ','')} · ${price.replace('Цена: ','')} · ${name}`);
+    } catch (err) {
+      showToast('Ошибка при отправке. Попробуйте ещё раз.');
+    }
+  });
+</script>
+</body>
+</html>
